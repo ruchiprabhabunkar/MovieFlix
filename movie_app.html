@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Finder App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Login Form -->
+    <div id="loginForm">
+        <h2>Movie Search</h2>
+        <div class="input-group">
+            <label for="userName">Email Address</label>
+            <input type="email" id="userName" placeholder="Enter your email">
+        </div>
+        <div class="input-group">
+            <label for="userPassword">Password</label>
+            <input type="password" id="userPassword" placeholder="Enter your password">
+        </div>
+        <button onclick="login()">Sign In</button>
+        <div id="error"></div>
+    </div>
+
+    <!-- Movie Dashboard -->
+    <div id="moviePage">
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search for a movie title (e.g. Inception)">
+            <button onclick="searchMovies()">Search</button>
+        </div>
+        
+        <ul id="movieList">
+            <!-- Example dynamic layout generation using the JS later on -->
+            <!--
+            <li class="movie-card">
+                <img src="..." alt="Movie Title"/>
+                <h3>Movie Title</h3>
+                <p><i>Year: 2024</i></p>
+            </li>
+            -->
+        </ul>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

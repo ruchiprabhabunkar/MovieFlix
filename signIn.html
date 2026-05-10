@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - MovieFlix</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Specific styles for the signin page, integrating with style.css */
+        .signin-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 20px 40px; /* offset for navbar and padding */
+            position: relative;
+            z-index: 10;
+        }
+        
+        .signin-box {
+            background-color: rgba(17, 24, 39, 0.85); /* --card-bg with opacity */
+            padding: 3.5rem 4rem;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(55, 65, 81, 0.5); /* --border */
+        }
+
+        .signin-box h2 {
+            font-size: 2rem;
+            margin-top: 0;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .form-group input {
+            width: 100%;
+            height: 60px;
+            padding: 1.5rem 1rem 0.5rem 1rem;
+            background: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 1rem;
+            box-sizing: border-box;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary);
+            background: #374151;
+        }
+
+        .form-group label {
+            position: absolute;
+            top: 50%;
+            left: 1rem;
+            transform: translateY(-50%);
+            color: #9ca3af;
+            pointer-events: none;
+            transition: 0.2s ease all;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus + label,
+        .form-group input:not(:placeholder-shown) + label {
+            top: 14px;
+            transform: translateY(0);
+            font-size: 0.75rem;
+            color: #d1d5db;
+        }
+        
+        .signin-btn {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .signin-footer {
+            color: #9ca3af;
+            font-size: 0.95rem;
+            margin-top: 1rem;
+        }
+
+        .signin-footer a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .signin-footer a:hover {
+            text-decoration: underline;
+            color: var(--primary);
+        }
+
+        /* Mobile Responsiveness for Form */
+        @media (max-width: 600px) {
+            .signin-box {
+                padding: 2.5rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Layer (Reused from Index) -->
+    <div class="hero-overlay" style="z-index: -1; position: fixed;"></div>
+    <img class="hero-bg" src="https://image.tmdb.org/t/p/original/orjiB3oUIsyz60hoEqkiGpy5CeO.jpg" alt="Background" style="z-index: -2; position: fixed;">
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <div class="nav-left">
+            <div class="logo">Movie<span>Flix</span></div>
+        </div>
+        <div class="nav-right">
+            <a href="index.html" class="btn-outline" style="text-decoration: none;">Home</a>
+        </div>
+    </header>
+
+    <!-- Sign In Form -->
+    <div class="signin-container">
+        <div class="signin-box">
+            <h2>Sign In</h2>
+            <form id="signinForm" >
+                
+                <div class="form-group">
+                    <input type="email" id="email" placeholder=" " required>
+                    <label for="email">Email address</label>
+                </div>
+                
+                <div class="form-group">
+                    <input type="password" id="password" placeholder=" " required>
+                    <label for="password">Password</label>
+                </div>
+
+                <button type="submit" class="btn-primary signin-btn">Sign In</button>
+                <p id="loginMessage"></p>
+                
+                <div class="signin-footer">
+                    New to MovieFlix? <a href="sigupForm.html">Sign up now.</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    
+    <script src="script.js"></script>
+
+
+
+
+</body>
+</html>

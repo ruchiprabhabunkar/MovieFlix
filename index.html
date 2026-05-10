@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MovieFlix</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <header class="navbar">
+      <div class="nav-left">
+        <div class="logo">Movie<span>Flix</span></div>
+        <ul class="nav-links">
+          <li><a href="#" class="active">Home</a></li>
+          <li><a href="#">Movies</a></li>
+          <li><a href="#">TV Shows</a></li>
+          <li><a href="#">Genres</a></li>
+          <li><a href="#">My List</a></li>
+        </ul>
+      </div>
+      <div class="nav-right">
+        <div class="search-container">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search movies, TV shows..."
+          />
+          <button onclick="searchMovies()">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+
+        <div id="authsection" class="authsection">
+          <button
+            class="btn-outline"
+            onclick="window.location.href = 'signIn.html'"
+          >
+            Sign In
+          </button>
+          <button
+            class="btn-primary"
+            onclick="window.location.href = 'sigupForm.html'"
+          >
+            Sign Up
+          </button>
+        </div>
+
+        <div id="userSection" class="userSection" style="display: none">
+          <span id="username"> </span>
+          <!-- <i class="fa-solid  fa-"></i> -->
+          <button onclick="logout()" class="btn-primary">Logout</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="mainContent">
+      <!-- Hero Section -->
+      <section class="hero" id="heroSection">
+        <div class="hero-overlay"></div>
+        <img
+          class="hero-bg"
+          src="https://image.tmdb.org/t/p/original/orjiB3oUIsyz60hoEqkiGpy5CeO.jpg"
+          alt="Avengers Endgame Hero"
+        />
+        <div class="hero-content">
+          <span class="trending-badge">TRENDING NOW</span>
+          <h1>Avengers: Endgame</h1>
+          <div class="hero-meta">
+            <span class="rating"><i class="fa-solid fa-star"></i> 8.4</span>
+            <span>2019</span>
+            <span>3h 2m</span>
+            <span>Action, Adventure, Drama</span>
+          </div>
+          <p class="hero-desc">
+            After the devastating events of Infinity War, the Avengers assemble
+            once more to undo Thanos' actions and restore balance to the
+            universe.
+          </p>
+          <div class="hero-buttons">
+            <button class="btn-primary">
+              <i class="fa-solid fa-play"></i> Watch Now
+            </button>
+            <button class="btn-outline">
+              <i class="fa-solid fa-plus"></i> My List
+            </button>
+          </div>
+          <div class="hero-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Movie Sections -->
+      <div id="moviesContainer">
+        <!-- Trending Now -->
+        <section class="movie-row">
+          <div class="row-header">
+            <h2>Trending Now</h2>
+            <a href="#" class="view-all"
+              >View All <i class="fa-solid fa-chevron-right"></i
+            ></a>
+          </div>
+          <div class="row-container">
+            <ul class="movie-list" id="trendingList">
+              <!-- Dynamic content -->
+            </ul>
+          </div>
+        </section>
+
+        <!-- Popular Movies -->
+        <section class="movie-row">
+          <div class="row-header">
+            <h2>Popular Movies</h2>
+            <a href="#" class="view-all"
+              >View All <i class="fa-solid fa-chevron-right"></i
+            ></a>
+          </div>
+          <div class="row-container">
+            <ul class="movie-list" id="popularList">
+              <!-- Dynamic content -->
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <!-- Search Results (Hidden by Default) -->
+      <section id="searchResultsSection" style="display: none">
+        <div class="row-header" style="padding: 0 4rem; margin-bottom: 2rem">
+          <h2>Search Results</h2>
+        </div>
+        <ul class="movie-grid" id="searchList">
+          <!-- Search results go here -->
+        </ul>
+      </section>
+
+      <!-- Genres -->
+      <section class="genres-section">
+        <h2>Genres</h2>
+        <div class="genres-grid">
+          <div class="genre-tag action">
+            <i class="fa-solid fa-fire"></i> Action
+          </div>
+          <div class="genre-tag adventure">
+            <i class="fa-solid fa-mountain"></i> Adventure
+          </div>
+          <div class="genre-tag comedy">
+            <i class="fa-regular fa-face-smile"></i> Comedy
+          </div>
+          <div class="genre-tag drama">
+            <i class="fa-solid fa-masks-theater"></i> Drama
+          </div>
+          <div class="genre-tag horror">
+            <i class="fa-solid fa-ghost"></i> Horror
+          </div>
+          <div class="genre-tag scifi">
+            <i class="fa-solid fa-rocket"></i> Sci-Fi
+          </div>
+          <div class="genre-tag thriller">
+            <i class="fa-solid fa-user-secret"></i> Thriller
+          </div>
+          <div class="genre-tag romance">
+            <i class="fa-solid fa-heart"></i> Romance
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer Callouts -->
+      <section class="features-section">
+        <div class="feature">
+          <i class="fa-solid fa-tv"></i>
+          <div class="f-text">
+            <h4>Enjoy on Your TV</h4>
+            <p>Watch on Smart TVs, PlayStation, Xbox, Chromecast.</p>
+          </div>
+        </div>
+        <div class="feature">
+          <i class="fa-solid fa-download"></i>
+          <div class="f-text">
+            <h4>Download Your Shows</h4>
+            <p>
+              Save your favorites easily and always have something to watch.
+            </p>
+          </div>
+        </div>
+        <div class="feature">
+          <i class="fa-solid fa-laptop"></i>
+          <div class="f-text">
+            <h4>Watch Everywhere</h4>
+            <p>
+              Stream unlimited movies and TV shows on phone, tablet, laptop.
+            </p>
+          </div>
+        </div>
+        <div class="feature">
+          <i class="fa-solid fa-users"></i>
+          <div class="f-text">
+            <h4>Create Profiles</h4>
+            <p>Tell us who's watching to get personalized recommendations.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-left">
+        <div class="footer-logo">Movie<span>Flix</span></div>
+        <p>&copy; 2026 MovieFlix. All rights reserved.</p>
+      </div>
+      <div class="footer-links">
+        <div class="col">
+          <h4>Company</h4>
+          <a href="#">About Us</a>
+          <a href="#">Careers</a>
+          <a href="#">Press</a>
+        </div>
+        <div class="col">
+          <h4>Help</h4>
+          <a href="#">Help Center</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+        <div class="col">
+          <h4>Account</h4>
+          <a href="#">My Account</a>
+          <a href="#">Watchlist</a>
+          <a href="#">Sign In</a>
+        </div>
+        <div class="col follow-us">
+          <h4>Follow Us</h4>
+          <div class="socials">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
