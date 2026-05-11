@@ -221,7 +221,59 @@
     </div>
 
 
-    <script src="script.js">
+    <script>
+
+
+ const genereItems = document.querySelectorAll(".genre-label");
+
+ 
+  let selectedGeneric = [];
+
+  genereItems.forEach(item => {
+    item.addEventListener("click", ()=>{
+
+        item.classList.toggle("active");
+
+        const genere = item.innerText;
+      
+        
+
+        if(selectedGeneric.includes(genere)){
+            selectedGeneric = selectedGeneric.filter( g => g !== genere);
+        } else{
+            selectedGeneric.push(genere)
+        }
+    });
+  });
+
+
+        // signup-form 
+   const sigupForm = document.getElementById("signupForm");
+   sigupForm.addEventListener("submit",(e)=>{
+    e.preventDefault();
+    const username = document.getElementById("username").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value
+    const user = {
+        username,
+        email,
+        password,
+        favGenere: selectedGeneric
+    };
+
+    localStorage.setItem(
+        "movieflixUser",
+        JSON.stringify(user)
+    );
+
+    document.getElementById("message").innerText = "Signup Successful"
+    setTimeout(()=>{
+      window.location.href ="signIn.html";
+    }, 1000)
+
+
+  });
+
 
     </script>
 

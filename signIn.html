@@ -149,14 +149,47 @@
                 <p id="loginMessage"></p>
                 
                 <div class="signin-footer">
-                    New to MovieFlix? <a href="sigupForm.html">Sign up now.</a>
+                    New to MovieFlix? <a href="signUpForm.html">Sign up now.</a>
                 </div>
             </form>
         </div>
     </div>
     
     
-    <script src="script.js"></script>
+    <script>
+  const signInForm = document.getElementById("signinForm");
+signInForm.addEventListener("submit", (e)=>{
+ e.preventDefault()
+ 
+ 
+ let email = document.getElementById("email").value ;
+ let password = document.getElementById("password").value;
+
+ let storedUser = JSON.parse(localStorage.getItem("movieflixUser"));
+
+
+if(!storedUser){
+     document.getElementById("loginMessage").innerText = "No account found Please sigup first."
+}
+
+ if(email === storedUser.email && password === storedUser.password){
+ document.getElementById("loginMessage").innerText = "Login Successfull !"
+
+ localStorage.setItem(
+   "loggedInUser",
+   JSON.stringify(storedUser)
+ );
+    
+    setTimeout(()=>{
+        window.location.href = "index.html"
+    },1000)
+ } 
+ else{
+   document.getElementById("loginMessage").innerText = "Incorrect credential ! try again." 
+  }
+})
+
+    </script>
 
 
 

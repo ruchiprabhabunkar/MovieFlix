@@ -85,61 +85,88 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
- const genereItems = document.querySelectorAll(".genre-label");
+//  const genereItems = document.querySelectorAll(".genre-label");
 
  
-  let selectedGeneric = [];
+//   let selectedGeneric = [];
 
-  genereItems.forEach(item => {
-    item.addEventListener("click", ()=>{
+//   genereItems.forEach(item => {
+//     item.addEventListener("click", ()=>{
 
-        item.classList.toggle("active");
+//         item.classList.toggle("active");
 
-        const genere = item.innerText;
+//         const genere = item.innerText;
       
         
 
-        if(selectedGeneric.includes(genere)){
-            selectedGeneric = selectedGeneric.filter( g => g !== genere);
-        } else{
-            selectedGeneric.push(genere)
-        }
-    });
-  });
+//         if(selectedGeneric.includes(genere)){
+//             selectedGeneric = selectedGeneric.filter( g => g !== genere);
+//         } else{
+//             selectedGeneric.push(genere)
+//         }
+//     });
+//   });
 
+
+// // signup-form 
+//    const sigupForm = document.getElementById("signupForm");
+//    sigupForm.addEventListener("submit",(e)=>{
+//     e.preventDefault();
+//     const username = document.getElementById("username").value;
+//     const email = document.getElementById("email").value;
+//     const password = document.getElementById("password").value
+//     const user = {
+//         username,
+//         email,
+//         password,
+//         favGenere: selectedGeneric
+//     };
+
+//     localStorage.setItem(
+//         "movieflixUser",
+//         JSON.stringify(user)
+//     );
+
+//     document.getElementById("message").innerText = "Signup Successful"
+//     setTimeout(()=>{
+//       window.location.href ="signIn.html";
+//     }, 1000)
+
+
+//   });
 
  //sign in form
-  const signInForm = document.getElementById("signinForm");
-signInForm.addEventListener("submit", (e)=>{
- e.preventDefault()
+//   const signInForm = document.getElementById("signinForm");
+// signInForm.addEventListener("submit", (e)=>{
+//  e.preventDefault()
  
  
- let email = document.getElementById("email").value ;
- let password = document.getElementById("password").value;
+//  let email = document.getElementById("email").value ;
+//  let password = document.getElementById("password").value;
 
- let storedUser = JSON.parse(localStorage.getItem("movieflixUser"));
+//  let storedUser = JSON.parse(localStorage.getItem("movieflixUser"));
 
 
-if(!storedUser){
-     document.getElementById("loginMessage").innerText = "No account found Please sigup first."
-}
+// if(!storedUser){
+//      document.getElementById("loginMessage").innerText = "No account found Please sigup first."
+// }
 
- if(email === storedUser.email && password === storedUser.password){
- document.getElementById("loginMessage").innerText = "Login Successfull !"
+//  if(email === storedUser.email && password === storedUser.password){
+//  document.getElementById("loginMessage").innerText = "Login Successfull !"
 
- localStorage.setItem(
-   "loggedInUser",
-   JSON.stringify(storedUser)
- );
+//  localStorage.setItem(
+//    "loggedInUser",
+//    JSON.stringify(storedUser)
+//  );
     
-    setTimeout(()=>{
-        window.location.href = "index.html"
-    },1000)
- } 
- else{
-   document.getElementById("loginMessage").innerText = "Incorrect credential ! try again." 
-  }
-})
+//     setTimeout(()=>{
+//         window.location.href = "index.html"
+//     },1000)
+//  } 
+//  else{
+//    document.getElementById("loginMessage").innerText = "Incorrect credential ! try again." 
+//   }
+// })
 
 function logout(){
     localStorage.removeItem("loggedInUser");
@@ -150,32 +177,7 @@ function logout(){
 
 
 
-// signup-form 
-   const sigupForm = document.getElementById("signupForm");
-   sigupForm.addEventListener("submit",(e)=>{
-    e.preventDefault();
-    const username = document.getElementById("username").value;
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value
-    const user = {
-        username,
-        email,
-        password,
-        favGenere: selectedGeneric
-    };
 
-    localStorage.setItem(
-        "movieflixUser",
-        JSON.stringify(user)
-    );
-
-    document.getElementById("message").innerText = "Signup Successful"
-    // setTimeout(()=>{
-    //   window.location.href ="signIn.html";
-    // }, 1000)
-
-
-  });
 
 
 
